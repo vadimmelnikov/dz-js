@@ -6,13 +6,12 @@ var allNumbers = [1, 2, 4, 5, 6, 7, 8],
 
 
 function isAllTrue(source, filterFn) {
-	result = true;
 	for (var i = 0; i < source.length; i++) {
 		if (filterFn(source[i]) != true) {
-			result = false;
+			return false;
 		}
 	}
-	return result;
+	return true;
 }
 
 
