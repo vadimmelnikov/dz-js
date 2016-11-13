@@ -6,16 +6,13 @@ var allNumbers = [1, 2, 4, 5, 6, 7, 8],
 	noNumbers = ['это', 'массив', 'без', 'чисел'];
 
 
-function isAllTrue(source, filterFn) {
-	result = true;
+function isSomeTrue(source, filterFn) {
 	for (var i = 0; i < source.length; i++) {
 		if (filterFn(source[i]) === true) {
-			result = true;
-		}else{
-			result = false;
+			return true;
 		}
 	}
-	return result;
+	return false;
 }
 
 
