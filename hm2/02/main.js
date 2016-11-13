@@ -23,8 +23,8 @@ function isNumber(val) {
 }
 
 
-console.log(isAllTrue(allNumbers, isNumber)); //вернет true
+console.log(isAllTrue(allNumbers, isNumber)); // вернет true
 
-console.log(isAllTrue(someNumbers, isNumber)); //вернет true
+console.log(isAllTrue(someNumbers, isNumber)); // вернет true
 
-console.log(isAllTrue(noNumbers, isNumber)); //вернет false
+console.log(isAllTrue(noNumbers, isNumber)); // вернет false
