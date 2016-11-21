@@ -34,13 +34,14 @@ btn.addEventListener('click', function(){
 	var newItem = createItem();
 	cont.appendChild(newItem);
 
-	newItem.onmousedown = function(e) { // 1. отследить нажатие
+	newItem.onmousedown = function(e) {
+		cont.appendChild(this);
 		moveAt(e);
 		var coords = getCoords(newItem);
 		var shiftX = e.pageX - coords.left;
 		var shiftY = e.pageY - coords.top;
 
-		newItem.style.zIndex = '999'; // показывать мяч над другими элементами
+		// newItem.style.zIndex = '1';
 
 
 		function moveAt(e) {
