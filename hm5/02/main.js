@@ -1,7 +1,5 @@
 var btn = document.getElementById('btn');
 var cont = document.getElementById('container');
-var div = document.createElement('div');
-// div.className = 'item';
 
 
 function createItem(){
@@ -12,6 +10,7 @@ function createItem(){
 	newItem.style.left = getRandomInt(0,400) + 'px';
 	newItem.style.right = getRandomInt(0,400) + 'px';
 	newItem.style.background =  getRandomColor();
+	newItem.style.cursor =  'pointer';
 	newItem.setAttribute('class', 'newitem');
 	return	newItem;
 }
@@ -28,9 +27,49 @@ function getRandomColor() {
 	return color;
 }
 
+
+
+
 btn.addEventListener('click', function(){
 	var newItem = createItem();
 	cont.appendChild(newItem);
+	newItem.onmousedown = function(e) {
+		cont.appendChild(this);
+		moveAt(e);
+		var coords = getCoords(newItem);
+		var shiftX = e.pageX - coords.left;
+		var shiftY = e.pageY - coords.top;
+
+		// newItem.style.zIndex = '1';
+
+
+		function moveAt(e) {
+			newItem.style.left = e.pageX - shiftX + 'px';
+			newItem.style.top = e.pageY - shiftY + 'px';
+		}
+
+		// 3, перемещать по экрану
+		cont.onmousemove = function (e) {
+			moveAt(e);
+		}
+
+		// 4. отследить окончание переноса
+		newItem.onmouseup = function () {
+			cont.onmousemove = null;
+			newItem.onmouseup = null;
+		}
+	}
+	newItem.ondragstart = function() {
+		return false;
+	};
 })
 
+function getCoords(elem) { // кроме IE8-
+	var box = elem.getBoundingClientRect();
 
+	return {
+		top: box.top + pageYOffset,
+		left: box.left + pageXOffset
+	};
+
+}
