@@ -26,15 +26,21 @@ var positiveArr = array.filter(function(number) {
 
 console.log( positiveArr );
 
-var newarray = [];
 
-for (var i = 0; i < array.length ; i++) {
-		if (array[i] > 4) {
-			newarray.push(array[i]);
+function analogFilter(arr){
+	var newarray = [];
+	for (var i = 0; i < arr.length ; i++) {
+		if (arr[i] > 4) {
+			newarray.push(arr[i]);
 		}
+	}
+	console.log('Аналог filter');
+	console.log(newarray);
 }
-console.log('Аналог filter');
-console.log(newarray);
+analogFilter([1, 2, 3, 4, 5, 6]);
+
+
+
 
 
 var numbers = [1, 4, 81];
@@ -42,13 +48,17 @@ var numbers = [1, 4, 81];
 var roots = numbers.map(Math.sqrt);
 console.log(roots);
 
-var sqare = [];
-for (var i = 0; i < numbers.length ; i++) {
-	var a = (numbers[i] * numbers[i]);
-	sqare.push(a);
+function analogMap(arr){
+	var sqare = [];
+	for (var i = 0; i < arr.length ; i++) {
+		var a = (arr[i] * arr[i]);
+		sqare.push(a);
+	}
+	console.log('Аналог map');
+	console.log(sqare);
 }
-console.log('Аналог map');
-console.log(sqare);
+analogMap(numbers);
+
 
 var orig = [1,2,3,4,5];
 var sum = orig.reduce(function(cum, val) {
@@ -56,10 +66,14 @@ var sum = orig.reduce(function(cum, val) {
 }, 0);
 console.log(sum);
 
-var result = 0;
+function analogReduce(arr){
+	var result = 0;
 
-for (var i = 0; i < orig.length ; i++) {
-	result += orig[i];
+	for (var i = 0; i < arr.length ; i++) {
+		result += arr[i];
+	}
+	console.log('Аналог reduce');
+	console.log(result);
 }
-console.log('Аналог reduce');
-console.log(result);
+analogReduce(orig);
+
