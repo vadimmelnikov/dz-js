@@ -1,23 +1,39 @@
-// function timer(time){
-// 	setTimeout(function(){
-// 		console.log('Я вывелась через ' + (time/1000) + ' сек');
-// 	}, time);
-// };
-//
-// timer(300);
+var cont = document.getElementById('cont');
 
-// var time = 3000;
-var timer = function (time){
-	return new Promise(function(resolve, reject) {
-		setTimeout(function () {
-			resolve();
-		}, time);
+var src = 'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json';
+
+function sendRequest(url) {
+	return new Promise(function (resolve, reject) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', url);
+		xhr.responseType = 'json';
+		xhr.send();
+		xhr.addEventListener('load', function(e){
+			resolve(xhr.response);
+		});
+		xhr.addEventListener('error', function(){
+			reject();
+		});
+
 	})
-};
+}
+sendRequest(src).then(
+	function (res) {
+		var cities = [];
+		for (var i = 0; i < res.length; i++) {
+			cities.push(res[i].name);
+		}
+		var receivedList = cities.sort();
+		receivedList.forEach(function(entry) {
+			var div = document.createElement('div');
+			div.innerHTML = entry;
+			cont.appendChild(div);
+			console.log(entry);
+		});
+	},
+	function () {
+		console.log('error');
+	}
+);
 
-
-// timer.then(function () {
-// 	console.log('Я вывелась через ' + (time/1000) + ' сек');
-// });
-timer(3000).then(() => console.log('Я вывелась через 3 сек'))
 
