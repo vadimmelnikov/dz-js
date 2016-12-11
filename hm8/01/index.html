@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ДЗ8</title>
+	<!--подрубаем усы-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js"></script>
+</head>
+<body>
+<input type="text" name="search" id="filter">
+<div id="cont">
+
+</div>
+<script src="main.js"></script>
+<script id="listTemplate" type="text/x-handlebars-template">
+	{{#each list}}
+	<div>{{name}}</div>
+	{{/each}}
+</script>
+</body>
+</html>
